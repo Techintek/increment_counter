@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increment Counter</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            flex-direction: column;
+        }
+
+        .counter {
+            font-size: 5rem;
+            margin: 20px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        button {
+            background-color: #1f1f1f;
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #333333;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div id="counter" class="counter">0</div>
+    <div>
+        <button id="decrement">-</button>
+        <button id="increment">+</button>
+        <button id="reset">Reset</button>
+    </div>
+
+    <script>
+        const counterElement = document.getElementById('counter');
+        const incrementBtn = document.getElementById('increment');
+        const decrementBtn = document.getElementById('decrement');
+        const resetBtn = document.getElementById('reset');
+
+        let count = 0;
+
+        function updateCounter(newCount) {
+            counterElement.textContent = newCount;
+            counterElement.style.transform = 'scale(1.2)';
+            counterElement.style.color = '#03DAC6';
+            setTimeout(() => {
+                counterElement.style.transform = 'scale(1)';
+                counterElement.style.color = '#ffffff';
+            }, 150);
+        }
+
+        incrementBtn.addEventListener('click', () => {
+            count++;
+            updateCounter(count);
+        });
+
+        decrementBtn.addEventListener('click', () => {
+            count--;
+            updateCounter(count);
+        });
+
+        resetBtn.addEventListener('click', () => {
+            count = 0;
+            updateCounter(count);
+        });
+    </script>
+</body>
+</html>
